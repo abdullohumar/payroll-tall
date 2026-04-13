@@ -1,4 +1,4 @@
-<div class="min-h-screen flex items-center justify-center bg-gray-100">
+<div class="min-h-screen w-full flex items-center justify-center bg-gray-100">
     <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
         
         <div class="text-center mb-8">
