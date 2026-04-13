@@ -1,15 +1,23 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Livewire\Auth\Login;
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', Login::class)->name('login');
 });
 
-// Nanti dashboard kita taruh di sini
 Route::middleware('auth')->group(function () {
     Route::get('/', function () {
-        return "Ini halaman dashboard. Nanti kita ganti dengan komponen Livewire.";
+        return view('dashboard'); // Kita akan buat file blade sederhana untuk ini
     })->name('dashboard');
+
+    // Route Logout standar Laravel
+    Route::post('/logout', function (\Illuminate\Http\Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login');
+    })->name('logout');
 });
