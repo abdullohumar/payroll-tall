@@ -31,6 +31,10 @@
                 Departemen
                 </a>
 
+                <a href="{{ route('jabatan.index') }}" class="flex items-center px-3 py-2 text-sm font-medium rounded-md {{ request()->routeIs('jabatan.index') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white' }}">
+                Jabatan
+                </a>
+
                 <a href="#" class="flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
                     Karyawan
                 </a>
