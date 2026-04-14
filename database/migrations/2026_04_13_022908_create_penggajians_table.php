@@ -10,29 +10,14 @@ return new class extends Migration
     {
         Schema::create('penggajian', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('karyawan_id')->constrained('karyawan')->cascadeOnDelete();
-            
-            // Periode
-            $table->integer('bulan');
-            $table->integer('tahun');
-            
-            // Kehadiran
-            $table->integer('hari_kerja');
-            $table->integer('hari_hadir');
-            $table->integer('hari_izin');
-            
-            // Komponen Keuangan
+            $table->foreignId('karyawan_id')->constrained('karyawan')->onDelete('cascade');
+            $table->string('bulan', 2); // 01, 02, dst
+            $table->string('tahun', 4); // 2026, dst
+            $table->date('tanggal_proses');
             $table->integer('gaji_pokok');
             $table->integer('tunjangan');
-            $table->integer('lembur')->default(0);
-            $table->integer('potongan')->default(0);
-            $table->integer('bpjs_ketenagakerjaan');
-            $table->integer('bpjs_kesehatan');
-            $table->integer('pph21');
-            $table->integer('gaji_bersih');
-            
-            $table->string('status')->default('draft'); // draft, dibayar
-            
+            $table->integer('potongan');
+            $table->integer('total_gaji');
             $table->timestamps();
         });
     }

@@ -3,15 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Penggajian extends Model
 {
     protected $table = 'penggajian';
-    
-    protected $guarded = ['id'];
+    protected $guarded = []; // Izinkan semua kolom diisi massal
 
-    public function karyawan(): BelongsTo
+    public function karyawan()
     {
         return $this->belongsTo(Karyawan::class);
     }

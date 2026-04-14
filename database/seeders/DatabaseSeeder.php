@@ -66,36 +66,5 @@ class DatabaseSeeder extends Seeder
                 'no_rekening'   => '1234' . rand(100_000, 999_999),
             ]);
         }
-
-        // === 5. CONTOH SLIP GAJI (Bulan Maret 2026) ===
-        $semuaKaryawan = Karyawan::all();
-        foreach ($semuaKaryawan as $k) {
-            $hadirlMaret = rand(18, 22);
-            $gpokok  = round($k->gaji_pokok * ($hadirlMaret / 22));
-            $tunj    = round($k->tunjangan * ($hadirlMaret / 22));
-            $bpjsTk  = round($gpokok * 0.02);
-            $bpjsKes = round($gpokok * 0.01);
-            $pkp     = max(0, ($gpokok + $tunj) * 12 - 54_000_000);
-            $pph21   = round(($pkp <= 60_000_000 ? $pkp * 0.05 : 3_000_000 + ($pkp - 60_000_000) * 0.15) / 12);
-            $bersih  = $gpokok + $tunj - $bpjsTk - $bpjsKes - $pph21;
-
-            Penggajian::create([
-                'karyawan_id'          => $k->id,
-                'bulan'                => 3,
-                'tahun'                => 2026,
-                'hari_kerja'           => 22,
-                'hari_hadir'           => $hadirlMaret,
-                'hari_izin'            => 22 - $hadirlMaret,
-                'gaji_pokok'           => $gpokok,
-                'tunjangan'            => $tunj,
-                'lembur'               => 0,
-                'potongan'             => 0,
-                'bpjs_ketenagakerjaan' => $bpjsTk,
-                'bpjs_kesehatan'       => $bpjsKes,
-                'pph21'                => $pph21,
-                'gaji_bersih'          => $bersih,
-                'status'               => rand(0,1) ? 'dibayar' : 'draft',
-            ]);
-        }
     }
 }

@@ -18,6 +18,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/jabatan', \App\Livewire\Master\JabatanIndex::class)->name('jabatan.index'); // <-- Tambahkan ini
     // ROUTE BARU: Karyawan
     Route::get('/karyawan', \App\Livewire\Karyawan\KaryawanIndex::class)->name('karyawan.index');
+    // ROUTE BARU: Transaksi Penggajian
+    Route::get('/penggajian', \App\Livewire\Transaksi\PenggajianIndex::class)->name('penggajian.index');
     // Route Logout standar Laravel
     Route::post('/logout', function (\Illuminate\Http\Request $request) {
         Auth::logout();
