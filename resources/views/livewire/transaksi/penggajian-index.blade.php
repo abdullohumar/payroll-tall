@@ -95,7 +95,7 @@
                                 Rp {{ number_format($gaji->total_gaji, 0, ',', '.') }}
                             </td>
                             <td class="px-6 py-4 text-sm text-center font-medium">
-                                <button class="text-blue-600 hover:text-blue-900 mr-3 opacity-50 cursor-not-allowed" title="Cetak Slip (Tahap 12)">Cetak</button>
+                                <a href="{{ route('penggajian.cetak', $gaji->id) }}" target="_blank" class="text-blue-600 hover:text-blue-900 font-bold mr-3">Cetak</a>
                                 <button wire:click="delete({{ $gaji->id }})" wire:confirm="Yakin hapus data slip gaji ini?" class="text-red-600 hover:text-red-900">Hapus</button>
                             </td>
                         </tr>

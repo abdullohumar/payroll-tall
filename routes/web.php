@@ -20,6 +20,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/karyawan', \App\Livewire\Karyawan\KaryawanIndex::class)->name('karyawan.index');
     // ROUTE BARU: Transaksi Penggajian
     Route::get('/penggajian', \App\Livewire\Transaksi\PenggajianIndex::class)->name('penggajian.index');
+    Route::get('/penggajian', \App\Livewire\Transaksi\PenggajianIndex::class)->name('penggajian.index');
+    // ROUTE BARU: Cetak Slip
+    Route::get('/penggajian/cetak/{id}', \App\Livewire\Transaksi\CetakSlip::class)->name('penggajian.cetak');
     // Route Logout standar Laravel
     Route::post('/logout', function (\Illuminate\Http\Request $request) {
         Auth::logout();
